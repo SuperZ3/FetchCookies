@@ -1,0 +1,37 @@
+{
+    "name": "getCookies",
+    "version": "1.9",
+    "description": "Build an Extension!",
+    "content_scripts": [
+        {
+          "matches": [
+            "https://*.jd.com/*",
+            "https://wl.jdl.com/*",
+            "https://*.pinduoduo.com/*",
+            "https://retaillink2.wal-mart.com/*",
+            "https://ppzh.jd.com/brand/homePage/index.html"
+            ],
+          "js": ["excute.js"],
+          "exclude_matches": [
+            "https://passport.jd.com/*",
+            "https://mms.pinduoduo.com/login*"
+            ],
+          "run_at": "document_start"
+        }
+    ],
+    "background": {
+      "service_worker": "background.js",
+      "type": "module"
+    },
+    "host_permissions": [
+        "https://*/*", 
+        "http://*/*" 
+    ],
+    "permissions": [
+      "cookies",
+      "tabs",
+      "activeTab",
+      "scripting"
+    ],
+    "manifest_version": 3
+}
