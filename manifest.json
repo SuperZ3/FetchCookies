@@ -1,25 +1,40 @@
 {
     "name": "getCookies",
-    "version": "1.9",
+    "version": "2.0.1",
     "description": "Build an Extension!",
     "content_scripts": [
         {
           "matches": [
             "https://*.jd.com/*",
             "https://wl.jdl.com/*",
-            "https://*.pinduoduo.com/*",
             "https://retaillink2.wal-mart.com/*",
-            "https://ppzh.jd.com/brand/homePage/index.html"
-            ],
-          "js": ["excute.js"],
+            "https://ppzh.jd.com/brand/homePage/index.html",
+            "http://trading.gsygroup.com/v#/agent/frame"
+          ],
+          "js": ["excute.js", "util.js"],
           "exclude_matches": [
-            "https://passport.jd.com/*",
-            "https://mms.pinduoduo.com/login*"
-            ],
-          "run_at": "document_start"
+            "https://passport.jd.com/*"
+          ],
+          "run_at": "document_start",
+          "type": "module"
+        },
+        {
+          "matches": [
+            "http://trading.gsygroup.com/*"
+          ],
+          "js": ["supplier.js", "util.js"],
+          "exclude_globs": [
+            "*login*"
+          ],
+          "run_at": "document_end",
+          "type": "module"
         }
     ],
-    "background": {
+    "action": {
+      "default_title": "配置信息",
+      "default_popup": "./popup.html"
+    },
+    "background": { 
       "service_worker": "background.js",
       "type": "module"
     },
@@ -29,9 +44,10 @@
     ],
     "permissions": [
       "cookies",
+      "scripting",
       "tabs",
-      "activeTab",
-      "scripting"
+      "storage",
+      "history"
     ],
     "manifest_version": 3
 }

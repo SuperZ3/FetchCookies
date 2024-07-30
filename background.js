@@ -1,7 +1,6 @@
 if (!chrome.runtime.onConnect.hasListeners()) {
     chrome.runtime.onConnect.addListener(function(port) {
         port.onMessage.addListener(function(message) {
-            console.log('receive', message)
             if (message.type == "getCookie" && message.url) {
                 chrome.cookies.getAllCookieStores((storeIds) => {
                     if (storeIds && storeIds instanceof Array && storeIds.length > 0) {
@@ -9,7 +8,6 @@ if (!chrome.runtime.onConnect.hasListeners()) {
                             if (tabIds?.includes(message.tabId)) {
                                 const parseUrl = new URL(message.url)
                                 const domain = parseUrl.host?.replace(/\w+/, '')
-                                console.log(message.url, domain)
                                 const option = {
                                     domain,
                                     storeId: id,
