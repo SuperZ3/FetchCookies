@@ -1,31 +1,299 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link href="./popup.css" rel="stylesheet">
-</head>
-<body>
-    <section style="width: 300px;padding: 8px 16px;">
-        <form id="config">
-            <div class="row mb-3">
-              <label for="systemName" class="col-sm-2 col-form-label">系统名称: </label>
-              <div class="col-sm-6">
-                <input placeholder="英文名称" pattern="[a-zA-Z]+" name="systemName" type="text" maxlength="6" class="form-control" id="systemName" aria-describedby="systemName">
-              </div>
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Document</title>
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
+			crossorigin="anonymous"
+		/>
+		<link href="./popup.css" rel="stylesheet" />
+	</head>
+	<body>
+		<div class="container container-min">
+			<div class="row title">
+				<h2 class="col">Cookie-Editor-Post</h2>
+				<!-- <button id="configMore" class="col-1 btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+            <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0m0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0"/>
+          </svg>
+        </button>
+        <div class="collapse" id="collapseExample">
+          <div class="row mb-3">
+            <label for="systemName" class="col-2 col-form-label">系统名称: </label>
+            <input class="col-6" placeholder="英文名称" pattern="[a-zA-Z]+" name="systemName" type="text" maxlength="6" class="form-control" id="systemName" aria-describedby="systemName">
+          </div>
+          <div class="row mb-3" id="supplierCodeWrapper">
+            <label for="supplierCode" class="col-sm-2 col-form-label">供应商简码: </label>
+            <div class="col-sm-10">
+              <input placeholder="英文简码" pattern="[a-zA-Z]+" name="supplierCode" type="text" class="form-control" maxlength="10" id="supplierCode">
             </div>
-            <div class="row mb-3" id="supplierCodeWrapper">
-              <label for="supplierCode" class="col-sm-2 col-form-label">供应商简码: </label>
-              <div class="col-sm-10">
-                <input placeholder="英文简码" pattern="[a-zA-Z]+" name="supplierCode" type="text" class="form-control" maxlength="10" id="supplierCode">
+          </div>
+        </div> -->
+			</div>
+			<div class="row border postAddressContainer">
+				<label for="postAddress" class="col-2 col-form-label">
+					<h5>Address: </h5>
+				</label>
+				<div class="col-10">
+					<input
+						type="text"
+						class="form-control"
+						id="postAddress"
+						name="postAddress"
+						placeholder="https://example.com"
+					/>
+				</div>
+			</div>
+			<div class="content cookieContainer">
+				<ul id="cookieList"></ul>
+			</div>
+			<ul class="row footer">
+				<!-- <li class="col border footer-li">
+					<button id="add" class="btn btn-custom">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="20"
+							height="20"
+							fill="currentColor"
+							class="bi bi-plus-lg"
+							viewBox="0 0 16 16"
+						>
+							<path
+								fill-rule="evenodd"
+								d="M8 2a.5.5 0 0 1 .5.5v5h5a.5.5 0 0 1 0 1h-5v5a.5.5 0 0 1-1 0v-5h-5a.5.5 0 0 1 0-1h5v-5A.5.5 0 0 1 8 2"
+							/>
+						</svg>
+						ADD
+					</button>
+				</li> -->
+				<li class="col border footer-li">
+					<button id="delete" class="btn btn-custom">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="20"
+							height="20"
+							fill="currentColor"
+							class="bi bi-archive"
+							viewBox="0 0 16 16"
+						>
+							<path
+								d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5zm13-3H1v2h14zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5"
+							/>
+						</svg>
+						DELETE
+					</button>
+				</li>
+				<li class="col border footer-li">
+					<button id="export" class="btn btn-custom">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="20"
+							height="20"
+							fill="currentColor"
+							class="bi bi-cloud-download"
+							viewBox="0 0 16 16"
+						>
+							<path
+								d="M4.406 1.342A5.53 5.53 0 0 1 8 0c2.69 0 4.923 2 5.166 4.579C14.758 4.804 16 6.137 16 7.773 16 9.569 14.502 11 12.687 11H10a.5.5 0 0 1 0-1h2.688C13.979 10 15 8.988 15 7.773c0-1.216-1.02-2.228-2.313-2.228h-.5v-.5C12.188 2.825 10.328 1 8 1a4.53 4.53 0 0 0-2.941 1.1c-.757.652-1.153 1.438-1.153 2.055v.448l-.445.049C2.064 4.805 1 5.952 1 7.318 1 8.785 2.23 10 3.781 10H6a.5.5 0 0 1 0 1H3.781C1.708 11 0 9.366 0 7.318c0-1.763 1.266-3.223 2.942-3.593.143-.863.698-1.723 1.464-2.383"
+							/>
+							<path
+								d="M7.646 15.854a.5.5 0 0 0 .708 0l3-3a.5.5 0 0 0-.708-.708L8.5 14.293V5.5a.5.5 0 0 0-1 0v8.793l-2.146-2.147a.5.5 0 0 0-.708.708z"
+							/>
+						</svg>
+						EXPORT
+					</button>
+				</li>
+				<li class="col border footer-li">
+					<button id="send" class="btn btn-custom">
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="20"
+							height="20"
+							fill="currentColor"
+							class="bi bi-cart-plus"
+							viewBox="0 0 16 16"
+						>
+							<path
+								d="M9 5.5a.5.5 0 0 0-1 0V7H6.5a.5.5 0 0 0 0 1H8v1.5a.5.5 0 0 0 1 0V8h1.5a.5.5 0 0 0 0-1H9z"
+							/>
+							<path
+								d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1zm3.915 10L3.102 4h10.796l-1.313 7zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0m7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0"
+							/>
+						</svg>
+						POST
+					</button>
+				</li>
+			</ul>
+		</div>
+		<template id="cookieItem">
+			<li class="row">
+				<div class="border cookieItemHeader">
+					<a
+						class="btn"
+						data-bs-toggle="collapse"
+						href="#collapseExample"
+						role="button"
+						aria-expanded="false"
+						aria-controls="collapseExample"
+					>
+						<svg
+							xmlns="http://www.w3.org/2000/svg"
+							width="16"
+							height="16"
+							fill="currentColor"
+							class="expandRow bi bi-chevron-down"
+							viewBox="0 0 16 16"
+						>
+							<path
+								fill-rule="evenodd"
+								d="M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708"
+							/>
+						</svg>
+						<span class="cookieItemTitle"></span>
+					</a>
+					<div>
+						<button class="btn cookieItemHandler">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								width="16"
+								height="16"
+								fill="currentColor"
+								class="bi bi-file-earmark-check"
+								viewBox="0 0 16 16"
+							>
+								<path
+									d="M10.854 7.854a.5.5 0 0 0-.708-.708L7.5 9.793 6.354 8.646a.5.5 0 1 0-.708.708l1.5 1.5a.5.5 0 0 0 .708 0z"
+								/>
+								<path
+									d="M14 14V4.5L9.5 0H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h8a2 2 0 0 0 2-2M9.5 3A1.5 1.5 0 0 0 11 4.5h2V14a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1h5.5z"
+								/>
+							</svg>
+						</button>
+						<button class="btn cookieItemHandler">
+							<svg
+								xmlns="http://www.w3.org/2000/svg"
+								width="16"
+								height="16"
+								fill="currentColor"
+								class="bi bi-archive"
+								viewBox="0 0 16 16"
+							>
+								<path
+									d="M0 2a1 1 0 0 1 1-1h14a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1v7.5a2.5 2.5 0 0 1-2.5 2.5h-9A2.5 2.5 0 0 1 1 12.5V5a1 1 0 0 1-1-1zm2 3v7.5A1.5 1.5 0 0 0 3.5 14h9a1.5 1.5 0 0 0 1.5-1.5V5zm13-3H1v2h14zM5 7.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5"
+								/>
+							</svg>
+						</button>
+					</div>
+				</div>
+				<form class="collapse cookieItemContainer" id="collapseExample">
+					<ul class="row mb-3">
+						<!-- <li class="col">
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  name="hostOnly"
+                  value=""
+                  id="hostOnly"
+                />
+                <label class="form-check-label" for="hostOnly">
+                  Host Only
+                </label>
               </div>
-            </div>
-            <button type="button" class="btn btn-primary" id="btn">提交</button>
-        </form> 
-    </section>
-    <script src="./bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-    <script src="./popup.js" type="module"></script>
-</body>
+            </li> -->
+						<!-- <li class="col">
+							<div class="form-check">
+								<input
+									class="form-check-input"
+									type="checkbox"
+									name="session"
+									value=""
+									id="session"
+								/>
+								<label class="form-check-label" for="session"> Session </label>
+							</div>
+						</li> -->
+						<li class="col">
+							<div class="form-check">
+								<input
+									class="form-check-input"
+									type="checkbox"
+									name="secure"
+									value=""
+									id="secure"
+								/>
+								<label class="form-check-label" for="secure"> Secure </label>
+							</div>
+						</li>
+						<li class="col">
+							<div class="form-check">
+								<input
+									class="form-check-input"
+									type="checkbox"
+									name="httpOnly"
+									value=""
+									id="httpOnly"
+								/>
+								<label class="form-check-label" for="httpOnly">
+									Http Only
+								</label>
+							</div>
+						</li>
+					</ul>
+					<div class="row mb-3">
+						<label for="name" class="col-2 col-form-label">Name</label>
+						<div class="col-10">
+							<input type="text" class="form-control" name="name" id="name" />
+						</div>
+					</div>
+					<div class="row mb-3">
+						<label for="value" class="col-2 col-form-label">Value</label>
+						<div class="col-10">
+							<input type="text" class="form-control" name="value" id="value" />
+						</div>
+					</div>
+					<div class="row mb-3">
+						<label for="domain" class="col-2 col-form-label">Domain</label>
+						<div class="col-10">
+							<input
+								type="text"
+								class="form-control"
+								name="domain"
+								id="domain"
+							/>
+						</div>
+					</div>
+					<div class="row mb-3">
+						<label for="path" class="col-2 col-form-label">Path</label>
+						<div class="col-10">
+							<input type="text" class="form-control" name="path" id="path" />
+						</div>
+					</div>
+					<div class="row mb-3">
+						<label for="expiration" class="col-2 col-form-label">
+							Expiration
+						</label>
+						<div class="col-10">
+							<input
+								type="text"
+								class="form-control"
+								id="expiration"
+								name="expiration"
+							/>
+						</div>
+					</div>
+				</form>
+			</li>
+		</template>
+		<script
+			src="./bootstrap.bundle.min.js"
+			integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+			crossorigin="anonymous"
+		></script>
+		<script src="./popup.js" type="module"></script>
+	</body>
 </html>

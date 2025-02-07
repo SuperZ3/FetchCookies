@@ -1,45 +1,17 @@
 {
-    "name": "getCookies",
-    "version": "2.0.1",
-    "description": "Build an Extension!",
-    "content_scripts": [
-        {
-          "matches": [
-            "https://*.jd.com/*",
-            "https://wl.jdl.com/*",
-            "https://retaillink2.wal-mart.com/*",
-            "https://ppzh.jd.com/brand/homePage/index.html",
-            "http://trading.gsygroup.com/v#/agent/frame"
-          ],
-          "js": ["excute.js", "util.js"],
-          "exclude_matches": [
-            "https://passport.jd.com/*"
-          ],
-          "run_at": "document_start",
-          "type": "module"
-        },
-        {
-          "matches": [
-            "http://trading.gsygroup.com/*"
-          ],
-          "js": ["supplier.js", "util.js"],
-          "exclude_globs": [
-            "*login*"
-          ],
-          "run_at": "document_end",
-          "type": "module"
-        }
-    ],
+    "name": "Cookie-Editor-Post",
+    "version": "1.0.0",
+    "description": "Modify the cookie of the selected page, and support the export and import of cookies, and transfer cookies to specific interface",
     "icons": {
-    "16": "./logo.png",
-    "48": "./logo.png",
-    "128": "./logo.png"
+    "16": "./icons/logo.png",
+    "48": "./icons/logo.png",
+    "128": "./icons/logo.png"
   },
     "action": {
       "default_icon": {
-        "16": "./logo.png",
-        "24": "./logo.png",
-        "32": "./logo.png" 
+        "16": "./icons/logo.png",
+        "24": "./icons/logo.png",
+        "32": "./icons/logo.png" 
       },
       "default_title": "配置信息",
       "default_popup": "./popup.html"
@@ -54,10 +26,9 @@
     ],
     "permissions": [
       "cookies",
-      "scripting",
       "tabs",
-      "storage",
-      "history"
+      "activeTab",
+      "downloads"
     ],
     "manifest_version": 3
 }
