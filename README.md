@@ -16,7 +16,7 @@ Cooki-Editor-Post 是一个用于从指定网站获取并存储 cookies 的工�
 ## 安装
 使用以下命令克隆仓库并安装依赖：
 ```bash
-git clone https://github.com/yourusername/FetchCookies.git
+git clone https://github.com/SuperZ3/FetchCookies.git
 cd FetchCookies
 ```
 
@@ -25,7 +25,7 @@ cd FetchCookies
 
 1. 克隆仓库并安装依赖：
     ```bash
-    git clone https://github.com/yourusername/FetchCookies.git
+    git clone https://github.com/SuperZ3/FetchCookies.git
     cd FetchCookies
     ```
 
